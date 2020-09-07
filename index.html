@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+    <style>
+        textarea {
+            resize: none;
+            width: 500px;
+            height: 200px;
+        }
+        .droptarget {
+        float: left; 
+        width: 500px; 
+        height: 500px;
+        margin: 15px;
+        padding: 10px;
+        background-image:url(GB.jpg);
+        background-repeat: no-repeat;
+        background-size: 400px 400px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <script>
+        function dragStart(event) {
+          event.dataTransfer.setData("Text", event.target.id);
+        }
+        
+        function allowDrop(event) {
+          event.preventDefault();
+        }
+        
+        function drop(event) {
+          event.preventDefault();
+          var data = event.dataTransfer.getData("Text");
+        document.getElementById("mydivheader").style.visibility = "hidden";
+          alert("Success");
+         
+
+          
+        }
+
+    </script>
+    <div class="container">
+        <div class="col-md-offset-3 col-md-6">
+            <h1>Enter your Grievance</h1>
+            <label for="grievance"></label>
+           
+            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                <textarea name="grievance" id="mydivheader" ondragstart="dragStart(event)" draggable="true" id="dragtarget"></textarea>
+        
+              </div>
+              
+
+
+        </div>
+    </div>
+    
+    
+</body>
+</html>
